@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/DiabateJS/gestion_identifiants_front/issues"
   },
-  "homepage": "https://github.com/DiabateJS/gestion_identifiants_front#readme"
+  "homepage": "https://github.com/DiabateJS/gestion_identifiants_front#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "sweetalert2": "^9.15.1"
+  }
 }
