@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gestion des identifiants</title>
+  <script src="bower_components\jquery\dist\jquery.js"></script>
+  <link rel="stylesheet" href="bower_components\bootstrap\dist\css\bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="bower_components\sweetalert2\dist\sweetalert2.css">
+  <link rel="stylesheet" href="css/custom_style.css">
+</head>
+<body>
+    <div class="container">
+       <div class="row">
+          <div class="jumbotron jumbotron-fluid col-lg-12">
+             <div class="container">
+                 <h1 class="display-4">Gestion d'identifiants</h1>
+                 <p class="lead">Cette application vous aide à gérer vos identifiants de façon sécurisée ! </p>
+             </div>
+         </div>
+       </div>
+
+       <br>
+       <br>
+       <form id="global_form">
+         <div class="row">
+             <div class="col-lg-3">
+                        <br>
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                               <div class="panel panel-default">
+                                   <div class="panel-heading" role="tab" id="headin1">
+                                       <h4 class="panel-title">
+                                           <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                               Site Web
+                                           </a>
+                                       </h4>
+                                   </div>
+                                   <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+                                       <div class="panel-body">
+                                           <div id="list_ident_site_web"></div>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="panel panel-default">
+                                   <div class="panel-heading" role="tab" id="heading2">
+                                       <h4 class="panel-title">
+                                           <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                               Messagerie
+                                           </a>
+                                       </h4>
+                                   </div>
+                                   <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                                       <div class="panel-body">
+                                           <div id="list_ident_messagerie"></div>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="panel panel-default">
+                                   <div class="panel-heading" role="tab" id="heading3">
+                                       <h4 class="panel-title">
+                                           <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                               Application
+                                           </a>
+                                       </h4>
+                                   </div>
+                                   <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                                       <div class="panel-body">
+                                           <div id="list_ident_application"></div>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="panel panel-default">
+                                   <div class="panel-heading" role="tab" id="heading4">
+                                       <h4 class="panel-title">
+                                           <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                               Carte bancaire
+                                           </a>
+                                       </h4>
+                                   </div>
+                                   <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                                       <div class="panel-body">
+                                           <div id="list_ident_cb"></div>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="panel panel-default">
+                                   <div class="panel-heading" role="tab" id="heading5">
+                                       <h4 class="panel-title">
+                                           <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                               Serveur
+                                           </a>
+                                       </h4>
+                                   </div>
+                                   <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                                       <div class="panel-body">
+                                           <div id="list_ident_serveur"></div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+             </div>
+             <div class="col-lg-5">
+              <fieldset>
+                  <legend>Détails</legend>
+                  <div class="form-group">
+                    <label for="Ident_type">Type d'identifiant</label>
+                    <select class="form-control" id="Ident_type">
+                        <option value="site_web">Compte sur un site web</option>
+                        <option value="carte_bancaire">Carte Bancaire</option>
+                        <option value="application">Application</option>
+                        <option value="compte_messagerie">Compte de messagerie</option>
+                        <option value="serveur">Serveur</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="Ident_nom">Identifiant</label>
+                      <input type="text" class="form-control" id="Ident_id" readonly>
+                  </div>
+                  <div class="form-group">
+                      <label for="Ident_nom">Nom</label>
+                      <input type="text" class="form-control" id="Ident_nom">
+                  </div>
+                  <div class="form-group">
+                      <label for="Ident_login">Login</label>
+                      <input type="text" class="form-control" id="Ident_login">
+                  </div>
+                  <div class="form-group">
+                      <label for="Ident_mdp">Mot de passe</label>
+                      <input type="text" class="form-control" id="Ident_mdp">
+                  </div>
+                  <div class="form-group">
+                      <label for="Ident_commentaire">Commentaires</label>
+                      <textarea class="form-control" id="Ident_commentaire"></textarea>
+                  </div>
+                  <div class="form-group">
+                      <center>
+                          <button type="button" class="btn btn-danger" data-placement="right" id="btnSupprimer">Supprimer</button>
+                          <button type="button" class="btn btn-warning" data-placement="center" id="btnNewForm">Nouveau</button>
+                          <button type="button" class="btn btn-success" data-placement="left" id="saveForm">Enregistrer</button>
+                      </center>
+                  </div>
+              </fieldset>
+              </div>
+              <div class="col-lg-4">
+                  <fieldset>
+                      <legend></legend>
+                      <br>
+                      <br>
+                  <div id="site_web">
+                      <div class="form-group">
+                        <label for="Ident_siteWeb_type">Type d'identifiant web</label>
+                        <select class="form-control" id="Ident_siteWeb_type">
+                            <option value="e-commerce">E-Commerce</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="Hebergement web">Hebergement web</option>
+                            <option value="standard">Standard</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="Ident_siteWeb_lien">Lien</label>
+                          <input type="text" class="form-control" id="Ident_siteWeb_lien">
+                      </div>
+                  </div>
+                  <div id="carte_bancaire">
+                      <div class="form-group">
+                          <label for="Ident_cb_banque">Banque</label>
+                          <input type="text" class="form-control" id="Ident_cb_banque">
+                      </div>
+                      <div class="form-group">
+                          <label for="Ident_cb_numero">Numéro</label>
+                          <input type="text" class="form-control" id="Ident_cb_numero">
+                      </div>
+                      <div class="form-group">
+                          <label for="Ident_cb_date_expiration">Date</label>
+                          <input type="text" class="form-control" id="Ident_cb_date_expiration">
+                      </div>
+                  </div>
+                  <div id="application">
+                      <div class="form-group">
+                        <label for="Ident_app_type">Type application</label>
+                        <select class="form-control" id="Ident_app_type">
+                            <option value="client_lourd">Client lourd</option>
+                            <option value="client_leger">Client léger</option>
+                            <option value="web">Web</option>
+                            <option value="mobile">Mobile</option>
+                            <option value="api">Api</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="Ident_app_nom">Nom application</label>
+                          <input type="text" class="form-control" id="Ident_app_nom">
+                      </div>
+                      <div class="form-group">
+                          <label for="Ident_app_version">Version</label>
+                          <input type="text" class="form-control" id="Ident_app_version">
+                      </div>
+                  </div>
+                  <div id="compte_messagerie">
+                      <div class="form-group">
+                          <label for="Ident_messagerie_nom">Nom messagerie</label>
+                          <input type="text" class="form-control" id="Ident_messagerie_nom">
+                      </div>
+                      <div class="form-group">
+                          <label for="Ident_messagerie_lien">Lien</label>
+                          <input type="text" class="form-control" id="Ident_messagerie_lien">
+                      </div>
+                  </div>
+                  <div id="serveur">
+                      <div class="form-group">
+                        <label for="Ident_serveur_type">Type serveur</label>
+                        <select class="form-control" id="Ident_serveur_type">
+                            <option value="serveur_bd">Base de données</option>
+                            <option value="serveur_fichier">Serveur de fichier</option>
+                            <option value="serveur_messagerie">Serveur de messagerie</option>
+                            <option value="serveur_app">Serveur d'application</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="Ident_serveur_lien">Lien du serveur</label>
+                          <input type="text" class="form-control" id="Ident_serveur_lien">
+                      </div>
+                      <div class="form-group">
+                          <label for="Ident_serveur_adresse_ip">Adresse ip</label>
+                          <input type="text" class="form-control" id="Ident_serveur_adresse_ip">
+                      </div>
+                      <div class="form-group">
+                          <label for="Ident_serveur.os">Systeme d'exploitation</label>
+                          <input type="text" class="form-control" id="Ident_serveur_os">
+                      </div>
+                      <div class="form-group">
+                          <label for="Ident_serveur_os_version">Version</label>
+                          <input type="text" class="form-control" id="Ident_serveur_os_version">
+                      </div>
+                  </div>
+                </fieldset>
+            </div>
+        </div>
+      </form>
+      </div>
+
+    <script src="bower_components\bootstrap\dist\js\bootstrap.js"></script>
+    <script src="bower_components\bootstrap\dist\js\bootstrap.js"></script>
+    <script src="bower_components\sweetalert2\dist\sweetalert2.all.js"></script>
+    <script src="js\config.js"></script>
+    <script src="js\form_common.js"></script>
+    <script src="js\form.js"></script>
+    <script>
+        var app_data;
+
+        $(document).ready(function(){
+            //Au chargement de la page
+
+            onFormLoad();
+
+            updateMenu();
+
+            $("#Ident_type").change(function(){
+                onListeTypeIdentifiantChange();
+            });
+
+            $("#Ident_type").val("site_web");
+
+            $("#saveForm").click(function(){
+
+                var id = $("#Ident_id").val();
+
+                if (id == "")
+                {
+                    saveNewIdentifiant();
+                }
+                else
+                {
+                    console.log("Mise à jour de l'identifiant : "+id);
+                    updateIdentifiant();
+                }
+
+
+            });
+
+            $("#btnNewForm").click(function(){
+                clearFormFields();
+            });
+
+            $("#btnSupprimer").click(function(){
+                deleteIdentifiant();
+            });
+
+        });
+    </script>
+</body>
+</html>
