@@ -322,6 +322,33 @@ function clearFormFields()
 
 }
 
+function getWebSiteMenu(webSiteCol){
+    var sCode = "<ul>";
+    var nbrePages = 1;
+    var currentPage = 1;
+    if (webSiteCol && webSiteCol.length){
+        var max = webSiteCol.length > 10 ? 10 : webSiteCol.length; 
+        //Calcul de pagination
+        nbrePages = Math.round(webSiteCol.length / 10 );
+        for (var i = 0 ; i < max ; i++)
+        {
+            sCode += "<li><a href='#' onClick=\"loadIdentifiant('site_web',"+webSiteCol[i].id_ident+")\">"+webSiteCol[i].libelle+"</a></li>";
+        }
+    }
+    sCode += "<li><center><b> 1 / "+nbrePages+" pages</b></center></li>";
+    //Construction de la barre de navigation
+    if (nbrePages > 1){
+        sCode +="<li><center>";
+        sCode +="<button class='btn btn-primary'><</button>";
+        sCode += " <button class='btn btn-warning'>"+currentPage+"</button> ";
+        sCode +=" ... ";
+        sCode += "<button class='btn btn-primary'>"+webSiteCol.length+"</button>";
+        sCode +=" <button class='btn btn-primary'>></button>";
+        sCode += "</center></ul>";
+    }
+    return sCode;
+}
+
 function updateMenu()
 {
 
@@ -341,12 +368,7 @@ function updateMenu()
             {
                 app_data = oRes.data;
 
-                var sCode = "<ul>";
-                for (var i = 0 ; i < app_data.site_web.length ; i++)
-                {
-                    sCode += "<li><a href='#' onClick=\"loadIdentifiant('site_web',"+app_data.site_web[i].id_ident+")\">"+app_data.site_web[i].libelle+"</a></li>";
-                }
-                sCode += "</ul>";
+                var sCode = getWebSiteMenu(app_data.site_web);
                 $("#list_ident_site_web").html(sCode);
 
                 sCode = "<ul>";
