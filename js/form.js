@@ -322,28 +322,56 @@ function clearFormFields()
 
 }
 
+function retriveDataBetweenIndexes(dataCol,beginIndex, endIndex){
+    var retrieveData = [];
+    if (dataCol && dataCol.length){
+        if (beginIndex < endIndex && dataCol.length >= endIndex){
+            for (var i = beginIndex; i< endIndex ; i++){
+                retrieveData.push(dataCol[i]);
+            }
+        }
+    }
+    return retrieveData;
+}
+
+var currentPage = 1;
+var nbrePagesSiteWeb = 1;
+var nbreLienParPage = 10;
+
+function goToPrevPage(){
+    if (currentPage > 1){
+        currentPage-= 1;
+        $("#paginationLabel").html("<b>"+currentPage+" / "+nbrePagesSiteWeb+" pages</b>");
+        updateMenu();
+    }
+
+}
+
+function goToNextPage(){
+    if (currentPage < nbrePagesSiteWeb){
+        currentPage+= 1;
+        $("#paginationLabel").html("<b>"+currentPage+" / "+nbrePagesSiteWeb+" pages</b>");
+        updateMenu();
+    }
+}
+
 function getWebSiteMenu(webSiteCol){
     var sCode = "<ul>";
-    var nbrePages = 1;
-    var currentPage = 1;
     if (webSiteCol && webSiteCol.length){
-        var max = webSiteCol.length > 10 ? 10 : webSiteCol.length; 
-        //Calcul de pagination
-        nbrePages = Math.round(webSiteCol.length / 10 );
-        for (var i = 0 ; i < max ; i++)
+        for (var i = 0 ; i < webSiteCol.length ; i++)
         {
             sCode += "<li><a href='#' onClick=\"loadIdentifiant('site_web',"+webSiteCol[i].id_ident+")\">"+webSiteCol[i].libelle+"</a></li>";
         }
     }
-    sCode += "<li><center><b> 1 / "+nbrePages+" pages</b></center></li>";
+    sCode += "<li><center><div id='paginationLabel'><b> "+currentPage+" / "+nbrePagesSiteWeb+" pages</b><div></center></li>";
     //Construction de la barre de navigation
-    if (nbrePages > 1){
+    if (nbrePagesSiteWeb > 1){
         sCode +="<li><center>";
-        sCode +="<button class='btn btn-primary'><</button>";
-        sCode += " <button class='btn btn-warning'>"+currentPage+"</button> ";
+        sCode +="<button class='btn btn-primary' onclick='goToPrevPage();return false;'><</button>";
+        sCode += " <button class='btn btn-primary'>1</button> ";
         sCode +=" ... ";
-        sCode += "<button class='btn btn-primary'>"+webSiteCol.length+"</button>";
-        sCode +=" <button class='btn btn-primary'>></button>";
+        sCode += "<button class='btn btn-primary'>"+nbrePagesSiteWeb+"</button>";
+        sCode +=" <button class='btn btn-primary' onclick='goToNextPage();return false;'>></button>";
         sCode += "</center></ul>";
     }
     return sCode;
@@ -368,7 +396,15 @@ function updateMenu()
             {
                 app_data = oRes.data;
 
-                var sCode = getWebSiteMenu(app_data.site_web);
+                nbrePagesSiteWeb = Math.round(app_data.site_web.length / nbreLienParPage);
+                var max = app_data.site_web.length > nbreLienParPage * (currentPage + 1) ? nbreLienParPage * (currentPage + 1) : app_data.site_web.length;
+                var newWebDataCol = [];
+                
+                for (var i = nbreLienParPage*currentPage ; i < max ; i++)
+                {
+                    newWebDataCol.push(app_data.site_web[i]);
+                }
+                var sCode = getWebSiteMenu(newWebDataCol);
                 $("#list_ident_site_web").html(sCode);
 
                 sCode = "<ul>";
