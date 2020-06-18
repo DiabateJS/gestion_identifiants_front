@@ -334,23 +334,37 @@ function retriveDataBetweenIndexes(dataCol,beginIndex, endIndex){
     return retrieveData;
 }
 
-var currentPage = 1;
-var nbrePagesSiteWeb = 1;
 var nbreLienParPage = 10;
+//Constantes catégorie site web
+var currentPageSiteWeb = 1;
+var nbrePagesSiteWeb = 1;
+//Constantes catégorie messagerie
+var currentPageMessagerie = 1;
+var nbrePagesMessagerie = 1;
+//Constantes catégorie application
+var currentPageApplication = 1;
+var nbrePagesApplication = 1;
+//Constantes Carte Bancaire
+var currentPageCarteBancaire = 1;
+var nbrePagesCarteBancaire = 1;
+//Constantes Serveur
+var currentPageServeur = 1;
+var nbrePagesServeur = 1;
 
-function goToPrevPage(){
-    if (currentPage > 1){
-        currentPage-= 1;
-        $("#paginationLabel").html("<b>"+currentPage+" / "+nbrePagesSiteWeb+" pages</b>");
+//############################# Début traitement pagination catégorie Site Web ########################################
+function goToPrevPageSiteWeb(){
+    if (currentPageSiteWeb > 1){
+        currentPageSiteWeb-= 1;
+        $("#paginationLabelSiteWeb").html("<b>"+currentPageSiteWeb+" / "+nbrePagesSiteWeb+" "+(nbrePagesSiteWeb == 1 ? "page" : "pages")+"</b>");
         updateMenu();
     }
 
 }
 
-function goToNextPage(){
-    if (currentPage < nbrePagesSiteWeb){
-        currentPage+= 1;
-        $("#paginationLabel").html("<b>"+currentPage+" / "+nbrePagesSiteWeb+" pages</b>");
+function goToNextPageSiteWeb(){
+    if (currentPageSiteWeb < nbrePagesSiteWeb){
+        currentPageSiteWeb+= 1;
+        $("#paginationLabelSiteWeb").html("<b>"+currentPageSiteWeb+" / "+nbrePagesSiteWeb+" "+(nbrePagesSiteWeb == 1 ? "page" : "pages")+"</b>");
         updateMenu();
     }
 }
@@ -363,19 +377,189 @@ function getWebSiteMenu(webSiteCol){
             sCode += "<li><a href='#' onClick=\"loadIdentifiant('site_web',"+webSiteCol[i].id_ident+")\">"+webSiteCol[i].libelle+"</a></li>";
         }
     }
-    sCode += "<li><center><div id='paginationLabel'><b> "+currentPage+" / "+nbrePagesSiteWeb+" pages</b><div></center></li>";
+    sCode += "<li><center><div id='paginationLabelSiteWeb'><b> "+currentPageSiteWeb+" / "+nbrePagesSiteWeb+" "+(nbrePagesSiteWeb == 1 ? "page" : "pages")+"</b><div></center></li>";
     //Construction de la barre de navigation
     if (nbrePagesSiteWeb > 1){
         sCode +="<li><center>";
-        sCode +="<button class='btn btn-primary' onclick='goToPrevPage();return false;'><</button>";
+        sCode +="<button class='btn btn-primary' onclick='goToPrevPageSiteWeb();return false;'><</button>";
         sCode += " <button class='btn btn-primary'>1</button> ";
         sCode +=" ... ";
         sCode += "<button class='btn btn-primary'>"+nbrePagesSiteWeb+"</button>";
-        sCode +=" <button class='btn btn-primary' onclick='goToNextPage();return false;'>></button>";
+        sCode +=" <button class='btn btn-primary' onclick='goToNextPageSiteWeb();return false;'>></button>";
         sCode += "</center></ul>";
     }
     return sCode;
 }
+
+//############################# Fin traitement pagination catégorie Site Web ########################################
+
+//############################# Début traitement pagination catégorie Messagerie ####################################
+function goToPrevPageMessagerie(){
+    if (currentPageMessagerie > 1){
+        currentPageMessagerie-= 1;
+        $("#paginationLabelMessagerie").html("<b>"+currentPageMessagerie+" / "+(nbrePagesMessagerie == 1 ? "page" : "pages")+"</b>");
+        updateMenu();
+    }
+
+}
+
+function goToNextPageMessagerie(){
+    if (currentPageMessagerie < nbrePagesMessagerie){
+        currentPageMessagerie+= 1;
+        $("#paginationLabelMessagerie").html("<b>"+currentPageMessagerie+" / "+(nbrePagesMessagerie == 1 ? "page" : "pages")+"</b>");
+        updateMenu();
+    }
+}
+
+function getWebMessagerie(messagerieCol){
+    var sCode = "<ul>";
+    if (messagerieCol && messagerieCol.length){
+        for (var i = 0 ; i < messagerieCol.length ; i++)
+        {
+            sCode += "<li><a href='#' onClick=\"loadIdentifiant('compte_messagerie',"+messagerieCol[i].id_ident+")\">"+messagerieCol[i].libelle+"</a></li>";
+        }
+    }
+    sCode += "<li><center><div id='paginationLabelMessagerie'><b> "+currentPageMessagerie+" / "+nbrePagesMessagerie+ " "+(nbrePagesMessagerie == 1 ? "page" : "pages")+"</b><div></center></li>";
+    //Construction de la barre de navigation
+    if (nbrePagesMessagerie > 1){
+        sCode +="<li><center>";
+        sCode +="<button class='btn btn-primary' onclick='goToPrevPageMessagerie();return false;'><</button>";
+        sCode += " <button class='btn btn-primary'>1</button> ";
+        sCode +=" ... ";
+        sCode += "<button class='btn btn-primary'>"+nbrePagesMessagerie+"</button>";
+        sCode +=" <button class='btn btn-primary' onclick='goToNextPageMessagerie();return false;'>></button>";
+        sCode += "</center></ul>";
+    }
+    return sCode;
+}
+
+//############################# Fin traitement pagination catégorie Messagerie ###################################
+
+//############################# Début traitement pagination catégorie Application ####################################
+function goToPrevPageApplication(){
+    if (currentPageApplication > 1){
+        currentPageApplication-= 1;
+        $("#paginationLabelApplication").html("<b>"+currentPageApplication+" / "+(nbrePagesApplication == 1 ? "page" : "pages")+"</b>");
+        updateMenu();
+    }
+
+}
+
+function goToNextPageApplication(){
+    if (currentPageApplication < nbrePagesApplication){
+        currentPageApplication+= 1;
+        $("#paginationLabelApplication").html("<b>"+currentPageApplication+" / "+(nbrePagesApplication == 1 ? "page" : "pages")+"</b>");
+        updateMenu();
+    }
+}
+
+function getWebApplication(applicationCol){
+    var sCode = "<ul>";
+    if (applicationCol && applicationCol.length){
+        for (var i = 0 ; i < applicationCol.length ; i++)
+        {
+            sCode += "<li><a href='#' onClick=\"loadIdentifiant('application',"+applicationCol[i].id_ident+")\">"+applicationCol[i].libelle+"</a></li>";
+        }
+    }
+    sCode += "<li><center><div id='paginationLabelApplication'><b> "+currentPageApplication+" / "+nbrePagesApplication+ " "+(nbrePagesApplication == 1 ? "page" : "pages")+"</b><div></center></li>";
+    //Construction de la barre de navigation
+    if (nbrePagesApplication > 1){
+        sCode +="<li><center>";
+        sCode +="<button class='btn btn-primary' onclick='goToPrevPageApplication();return false;'><</button>";
+        sCode += " <button class='btn btn-primary'>1</button> ";
+        sCode +=" ... ";
+        sCode += "<button class='btn btn-primary'>"+nbrePagesApplication+"</button>";
+        sCode +=" <button class='btn btn-primary' onclick='goToNextPageApplication();return false;'>></button>";
+        sCode += "</center></ul>";
+    }
+    return sCode;
+}
+
+//############################# Fin traitement pagination catégorie Application ###################################
+
+//############################# Début traitement pagination catégorie Carte Bancaire ####################################
+function goToPrevPageCarteBancaire(){
+    if (currentPageCarteBancaire > 1){
+        currentPageCarteBancaire-= 1;
+        $("#paginationLabelCarteBancaire").html("<b>"+currentPageCarteBancaire+" / "+(nbrePagesCarteBancaire == 1 ? "page" : "pages")+"</b>");
+        updateMenu();
+    }
+
+}
+
+function goToNextPageCarteBancaire(){
+    if (currentPageCarteBancaire < nbrePagesCarteBancaire){
+        currentPageCarteBancaire+= 1;
+        $("#paginationLabelCarteBancaire").html("<b>"+currentPageCarteBancaire+" / "+(nbrePagesCarteBancaire == 1 ? "page" : "pages")+"</b>");
+        updateMenu();
+    }
+}
+
+function getWebCarteBancaire(carteBancaireCol){
+    var sCode = "<ul>";
+    if (carteBancaireCol && carteBancaireCol.length){
+        for (var i = 0 ; i < carteBancaireCol.length ; i++)
+        {
+            sCode += "<li><a href='#' onClick=\"loadIdentifiant('carte_bancaire',"+carteBancaireCol[i].id_ident+")\">"+carteBancaireCol[i].libelle+"</a></li>";
+        }
+    }
+    sCode += "<li><center><div id='paginationLabelCarteBancaire'><b> "+currentPageCarteBancaire+" / "+nbrePagesCarteBancaire+ " "+(nbrePagesCarteBancaire == 1 ? "page" : "pages")+"</b><div></center></li>";
+    //Construction de la barre de navigation
+    if (nbrePagesCarteBancaire > 1){
+        sCode +="<li><center>";
+        sCode +="<button class='btn btn-primary' onclick='goToPrevPageCarteBancaire();return false;'><</button>";
+        sCode += " <button class='btn btn-primary'>1</button> ";
+        sCode +=" ... ";
+        sCode += "<button class='btn btn-primary'>"+nbrePagesCarteBancaire+"</button>";
+        sCode +=" <button class='btn btn-primary' onclick='goToNextPageCarteBancaire();return false;'>></button>";
+        sCode += "</center></ul>";
+    }
+    return sCode;
+}
+
+//############################# Fin traitement pagination catégorie Carte Bancaire ###################################
+
+//############################# Début traitement pagination catégorie Serveur ####################################
+function goToPrevPageServeur(){
+    if (currentPageServeur > 1){
+        currentPageServeur-= 1;
+        $("#paginationLabelServeur").html("<b>"+currentPageServeur+" / "+(nbrePagesServeur == 1 ? "page" : "pages")+"</b>");
+        updateMenu();
+    }
+
+}
+
+function goToNextPageServeur(){
+    if (currentPageServeur < nbrePagesServeur){
+        currentPageServeur+= 1;
+        $("#paginationLabelServeur").html("<b>"+currentPageServeur+" / "+(nbrePagesServeur == 1 ? "page" : "pages")+"</b>");
+        updateMenu();
+    }
+}
+
+function getWebServeur(carteServeurCol){
+    var sCode = "<ul>";
+    if (carteServeurCol && carteServeurCol.length){
+        for (var i = 0 ; i < carteServeurCol.length ; i++)
+        {
+            sCode += "<li><a href='#' onClick=\"loadIdentifiant('serveur',"+carteServeurCol[i].id_ident+")\">"+carteServeurCol[i].libelle+"</a></li>";
+        }
+    }
+    sCode += "<li><center><div id='paginationLabelServeur'><b> "+currentPageServeur+" / "+nbrePagesServeur+ " "+(nbrePagesServeur == 1 ? "page" : "pages")+"</b><div></center></li>";
+    //Construction de la barre de navigation
+    if (nbrePagesServeur > 1){
+        sCode +="<li><center>";
+        sCode +="<button class='btn btn-primary' onclick='goToPrevPageServeur();return false;'><</button>";
+        sCode += " <button class='btn btn-primary'>1</button> ";
+        sCode +=" ... ";
+        sCode += "<button class='btn btn-primary'>"+nbrePagesServeur+"</button>";
+        sCode +=" <button class='btn btn-primary' onclick='goToNextPageServeur();return false;'>></button>";
+        sCode += "</center></ul>";
+    }
+    return sCode;
+}
+
+//############################# Fin traitement pagination catégorie Serveur ###################################
 
 function updateMenu()
 {
@@ -395,48 +579,69 @@ function updateMenu()
             if (oRes.return_code == 200)
             {
                 app_data = oRes.data;
-
+                //Chargement des identifiants site web
                 nbrePagesSiteWeb = Math.round(app_data.site_web.length / nbreLienParPage);
-                var max = app_data.site_web.length > nbreLienParPage * (currentPage + 1) ? nbreLienParPage * (currentPage + 1) : app_data.site_web.length;
+                var debutIndexSiteWeb = nbrePagesSiteWeb == 1 ? 0 : nbreLienParPage*(currentPageSiteWeb - 1);
+                var maxSiteWeb = app_data.site_web.length > nbreLienParPage * (currentPageSiteWeb + 1) ? nbreLienParPage * currentPageSiteWeb : app_data.site_web.length;
                 var newWebDataCol = [];
                 
-                for (var i = nbreLienParPage*currentPage ; i < max ; i++)
+                for (var i = debutIndexSiteWeb ; i < maxSiteWeb ; i++)
                 {
                     newWebDataCol.push(app_data.site_web[i]);
                 }
                 var sCode = getWebSiteMenu(newWebDataCol);
                 $("#list_ident_site_web").html(sCode);
 
-                sCode = "<ul>";
-                for (var i = 0 ; i < app_data.compte_messagerie.length ; i++)
+                //Chargement des identifiants messagerie
+                nbrePagesMessagerie = Math.round(app_data.compte_messagerie.length / nbreLienParPage);
+                var debutIndexMessagerie = nbrePagesMessagerie == 1 ? 0 : nbreLienParPage*(currentPageMessagerie - 1);
+                var maxMessagerie = app_data.compte_messagerie.length > nbreLienParPage * (currentPageMessagerie + 1) ? nbreLienParPage * currentPageMessagerie : app_data.compte_messagerie.length;
+                var newMessagerieDataCol = [];
+                
+                for (var i = debutIndexMessagerie ; i < maxMessagerie ; i++)
                 {
-                    sCode += "<li><a href='#' onClick=\"loadIdentifiant('compte_messagerie',"+app_data.compte_messagerie[i].id_ident+")\">"+app_data.compte_messagerie[i].libelle+"</a></li>";
+                    newMessagerieDataCol.push(app_data.compte_messagerie[i]);
                 }
-                sCode += "</ul>";
+                var sCode = getWebMessagerie(newMessagerieDataCol);
                 $("#list_ident_messagerie").html(sCode);
 
-                sCode = "<ul>";
-                for (var i = 0 ; i < app_data.application.length ; i++)
+                //Chargement des identifiants application
+                nbrePagesApplication = Math.round(app_data.application.length / nbreLienParPage);
+                var debutIndexApplication = nbrePagesApplication == 1 ? 0 : nbreLienParPage*(currentPageApplication - 1);
+                var maxApplication = app_data.application.length > nbreLienParPage * (currentPageApplication + 1) ? nbreLienParPage * currentPageApplication : app_data.application.length;
+                var newApplicationDataCol = [];
+
+                for (var i = debutIndexApplication ; i < maxApplication ; i++)
                 {
-                    sCode += "<li><a href='#' onClick=\"loadIdentifiant('application',"+app_data.application[i].id_ident+")\">"+app_data.application[i].libelle+"</a></li>";
+                    newApplicationDataCol.push(app_data.application[i]);
                 }
-                sCode += "</ul>";
+                var sCode = getWebApplication(newApplicationDataCol);
                 $("#list_ident_application").html(sCode);
 
-                sCode = "<ul>";
-                for (var i = 0 ; i < app_data.carte_bancaire.length ; i++)
+                //Chargement des identifiants carte bancaire
+                nbrePagesCarteBancaire = Math.round(app_data.carte_bancaire.length / nbreLienParPage);
+                var debutIndexCarteBancaire = nbrePagesCarteBancaire == 1 ? 0 : nbreLienParPage*(currentPageCarteBancaire - 1);
+                var maxCarteBancaire = app_data.carte_bancaire.length > nbreLienParPage * (currentPageCarteBancaire + 1) ? nbreLienParPage * currentPageCarteBancaire : app_data.carte_bancaire.length;
+                var newCarteBancaireDataCol = [];
+
+                for (var i = debutIndexCarteBancaire ; i < maxCarteBancaire ; i++)
                 {
-                    sCode += "<li><a href='#' onClick=\"loadIdentifiant('carte_bancaire',"+app_data.carte_bancaire[i].id_ident+")\">"+app_data.carte_bancaire[i].libelle+"</a></li>";
+                    newCarteBancaireDataCol.push(app_data.carte_bancaire[i]);
                 }
-                sCode += "</ul>";
+                var sCode = getWebCarteBancaire(newCarteBancaireDataCol);
                 $("#list_ident_cb").html(sCode);
 
-                sCode = "<ul>";
-                for (var i = 0 ; i < app_data.serveur.length ; i++)
+                //Chargement des identifiants serveur
+                nbrePagesServeur = Math.round(app_data.serveur.length / nbreLienParPage);
+                var debutIndexServeur = nbrePagesServeur == 1 ? 0 : nbreLienParPage*(currentPageServeur - 1);
+                var maxServeur = app_data.serveur.length > nbreLienParPage * (currentPageServeur + 1) ? nbreLienParPage * currentPageServeur : app_data.serveur.length;
+                var newServeurDataCol = [];
+                
+                for (var i = debutIndexServeur ; i < maxServeur ; i++)
                 {
-                    sCode += "<li><a href='#' onClick=\"loadIdentifiant('serveur',"+app_data.serveur[i].id_ident+")\">"+app_data.serveur[i].libelle+"</a></li>";
+                    newServeurDataCol.push(app_data.serveur[i]);
                 }
-                sCode += "</ul>";
+                var sCode = getWebServeur(newServeurDataCol);
                 $("#list_ident_serveur").html(sCode);
 
             }
