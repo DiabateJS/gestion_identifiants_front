@@ -25,7 +25,7 @@
            <div class="col-lg-9">
                 <div style="float:right;">
                     <input type="text" style="width:400px;" placeholder="Search" />
-                    <button class="btn btn-sm btn-primary">Search</button> <br>
+                    <button class="btn btn-sm btn-primary" id="btnSearch">Search</button><br>
                     <table>
                         <tr>
                             <td colspan=3><a href="#" id="searchOption">[-]</a> <b>Options de recherche</b></td>
@@ -273,6 +273,8 @@
 
         $(document).ready(function(){
             //Au chargement de la page
+            $("#searchOption").html("[+]");
+            $(".searchOpt").hide();
 
             //Mécanisme d'expension réduction de la zone de recherche
             $("#searchOption").on('click',function(){
