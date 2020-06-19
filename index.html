@@ -20,7 +20,29 @@
              </div>
          </div>
        </div>
-
+       <div class="row">
+           <div class="col-lg-3"></div>
+           <div class="col-lg-9">
+                <div style="float:right;">
+                    <input type="text" style="width:400px;" placeholder="Search" />
+                    <button class="btn btn-sm btn-primary">Search</button> <br>
+                    <table>
+                        <tr>
+                            <td colspan=3><a href="#" id="searchOption">[-]</a> <b>Options de recherche</b></td>
+                        </tr>
+                        <tr class="searchOpt">
+                            <td><input type="checkbox" value="site_web">Site Web</td>
+                            <td><input type="checkbox" value="messagerie">Messagerie</td>
+                            <td><input type="checkbox" value="application">Application</td>
+                        </tr>
+                        <tr class="searchOpt">
+                            <td><input type="checkbox" value="carte_bancaire">Carte Bancaire</td>
+                            <td colspan=2><input type="checkbox" value="serveur">Serveur</td>
+                        </tr>
+                    </table>
+                </div>
+           </div>
+       </div>
        <br>
        <br>
        <form id="global_form">
@@ -251,6 +273,16 @@
 
         $(document).ready(function(){
             //Au chargement de la page
+
+            //Mécanisme d'expension réduction de la zone de recherche
+            $("#searchOption").on('click',function(){
+                if ($("#searchOption").html() == "[-]"){
+                    $("#searchOption").html("[+]");
+                }else{
+                    $("#searchOption").html("[-]");
+                }
+                $(".searchOpt").toggle();
+            });
 
             onFormLoad();
 
