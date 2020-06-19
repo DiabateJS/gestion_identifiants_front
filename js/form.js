@@ -377,16 +377,14 @@ function getWebSiteMenu(webSiteCol){
             sCode += "<li><a href='#' onClick=\"loadIdentifiant('site_web',"+webSiteCol[i].id_ident+")\">"+webSiteCol[i].libelle+"</a></li>";
         }
     }
-    sCode += "<li><center><div id='paginationLabelSiteWeb'><b> "+currentPageSiteWeb+" / "+nbrePagesSiteWeb+" "+(nbrePagesSiteWeb == 1 ? "page" : "pages")+"</b><div></center></li>";
+
     //Construction de la barre de navigation
     if (nbrePagesSiteWeb > 1){
-        sCode +="<li><center>";
+        sCode +="<li>";
         sCode +="<button class='btn btn-primary' onclick='goToPrevPageSiteWeb();return false;'><</button>";
-        sCode += " <button class='btn btn-primary'>1</button> ";
-        sCode +=" ... ";
-        sCode += "<button class='btn btn-primary'>"+nbrePagesSiteWeb+"</button>";
+        sCode +="<span id='paginationLabelSiteWeb'><b> "+currentPageSiteWeb+" / "+nbrePagesSiteWeb+" "+(nbrePagesSiteWeb == 1 ? "page" : "pages")+"</b><span>";
         sCode +=" <button class='btn btn-primary' onclick='goToNextPageSiteWeb();return false;'>></button>";
-        sCode += "</center></ul>";
+        sCode += "</ul>";
     }
     return sCode;
 }
@@ -435,16 +433,13 @@ function getWebMessagerie(messagerieCol){
             sCode += "<li><a href='#' onClick=\"loadIdentifiant('compte_messagerie',"+messagerieCol[i].id_ident+")\">"+messagerieCol[i].libelle+"</a></li>";
         }
     }
-    sCode += "<li><center><div id='paginationLabelMessagerie'><b> "+currentPageMessagerie+" / "+nbrePagesMessagerie+ " "+(nbrePagesMessagerie == 1 ? "page" : "pages")+"</b><div></center></li>";
     //Construction de la barre de navigation
     if (nbrePagesMessagerie > 1){
-        sCode +="<li><center>";
+        sCode +="<li>";
         sCode +="<button class='btn btn-primary' onclick='goToPrevPageMessagerie();return false;'><</button>";
-        sCode += " <button class='btn btn-primary'>1</button> ";
-        sCode +=" ... ";
-        sCode += "<button class='btn btn-primary'>"+nbrePagesMessagerie+"</button>";
+        sCode +="<span id='paginationLabelMessagerie'><b> "+currentPageMessagerie+" / "+nbrePagesMessagerie+ " "+(nbrePagesMessagerie == 1 ? "page" : "pages")+"</b></span>";
         sCode +=" <button class='btn btn-primary' onclick='goToNextPageMessagerie();return false;'>></button>";
-        sCode += "</center></ul>";
+        sCode += "</ul>";
     }
     return sCode;
 }
@@ -493,16 +488,14 @@ function getWebApplication(applicationCol){
             sCode += "<li><a href='#' onClick=\"loadIdentifiant('application',"+applicationCol[i].id_ident+")\">"+applicationCol[i].libelle+"</a></li>";
         }
     }
-    sCode += "<li><center><div id='paginationLabelApplication'><b> "+currentPageApplication+" / "+nbrePagesApplication+ " "+(nbrePagesApplication == 1 ? "page" : "pages")+"</b><div></center></li>";
+    sCode += "";
     //Construction de la barre de navigation
     if (nbrePagesApplication > 1){
-        sCode +="<li><center>";
+        sCode +="<li>";
         sCode +="<button class='btn btn-primary' onclick='goToPrevPageApplication();return false;'><</button>";
-        sCode += " <button class='btn btn-primary'>1</button> ";
-        sCode +=" ... ";
-        sCode += "<button class='btn btn-primary'>"+nbrePagesApplication+"</button>";
+        sCode +="<span id='paginationLabelApplication'><b> "+currentPageApplication+" / "+nbrePagesApplication+ " "+(nbrePagesApplication == 1 ? "page" : "pages")+"</b></span>";
         sCode +=" <button class='btn btn-primary' onclick='goToNextPageApplication();return false;'>></button>";
-        sCode += "</center></ul>";
+        sCode += "</ul>";
     }
     return sCode;
 }
@@ -551,14 +544,11 @@ function getWebCarteBancaire(carteBancaireCol){
             sCode += "<li><a href='#' onClick=\"loadIdentifiant('carte_bancaire',"+carteBancaireCol[i].id_ident+")\">"+carteBancaireCol[i].libelle+"</a></li>";
         }
     }
-    sCode += "<li><center><div id='paginationLabelCarteBancaire'><b> "+currentPageCarteBancaire+" / "+nbrePagesCarteBancaire+ " "+(nbrePagesCarteBancaire == 1 ? "page" : "pages")+"</b><div></center></li>";
     //Construction de la barre de navigation
     if (nbrePagesCarteBancaire > 1){
         sCode +="<li><center>";
         sCode +="<button class='btn btn-primary' onclick='goToPrevPageCarteBancaire();return false;'><</button>";
-        sCode += " <button class='btn btn-primary'>1</button> ";
-        sCode +=" ... ";
-        sCode += "<button class='btn btn-primary'>"+nbrePagesCarteBancaire+"</button>";
+        sCode +="<span id='paginationLabelCarteBancaire'><b> "+currentPageCarteBancaire+" / "+nbrePagesCarteBancaire+ " "+(nbrePagesCarteBancaire == 1 ? "page" : "pages")+"</b><span>";
         sCode +=" <button class='btn btn-primary' onclick='goToNextPageCarteBancaire();return false;'>></button>";
         sCode += "</center></ul>";
     }
@@ -609,16 +599,15 @@ function getWebServeur(carteServeurCol){
             sCode += "<li><a href='#' onClick=\"loadIdentifiant('serveur',"+carteServeurCol[i].id_ident+")\">"+carteServeurCol[i].libelle+"</a></li>";
         }
     }
-    sCode += "<li><center><div id='paginationLabelServeur'><b> "+currentPageServeur+" / "+nbrePagesServeur+ " "+(nbrePagesServeur == 1 ? "page" : "pages")+"</b><div></center></li>";
     //Construction de la barre de navigation
     if (nbrePagesServeur > 1){
-        sCode +="<li><center>";
+        sCode +="<li>";
         sCode +="<button class='btn btn-primary' onclick='goToPrevPageServeur();return false;'><</button>";
         sCode += " <button class='btn btn-primary'>1</button> ";
-        sCode +=" ... ";
+        sCode +="<span id='paginationLabelServeur'><b> "+currentPageServeur+" / "+nbrePagesServeur+ " "+(nbrePagesServeur == 1 ? "page" : "pages")+"</b></span>";
         sCode += "<button class='btn btn-primary'>"+nbrePagesServeur+"</button>";
         sCode +=" <button class='btn btn-primary' onclick='goToNextPageServeur();return false;'>></button>";
-        sCode += "</center></ul>";
+        sCode += "</ul>";
     }
     return sCode;
 }
