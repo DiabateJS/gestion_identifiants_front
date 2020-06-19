@@ -393,7 +393,7 @@ function buildWebSiteMenu(app_data){
     if (app_data && app_data.site_web && app_data.site_web.length){
         nbrePagesSiteWeb = Math.round(app_data.site_web.length / nbreLienParPage);
         var debutIndexSiteWeb = nbrePagesSiteWeb == 1 ? 0 : nbreLienParPage*(currentPageSiteWeb - 1);
-        var maxSiteWeb = app_data.site_web.length > nbreLienParPage * (currentPageSiteWeb + 1) ? nbreLienParPage * currentPageSiteWeb : app_data.site_web.length;
+        var maxSiteWeb = app_data.site_web.length >= nbreLienParPage * (currentPageSiteWeb + 1) ? nbreLienParPage * currentPageSiteWeb : app_data.site_web.length;
         var newWebDataCol = [];
         
         for (var i = debutIndexSiteWeb ; i < maxSiteWeb ; i++)
@@ -448,7 +448,7 @@ function buildMessagerieMenu(app_data){
     if (app_data && app_data.compte_messagerie && app_data.compte_messagerie.length){
         nbrePagesMessagerie = Math.round(app_data.compte_messagerie.length / nbreLienParPage);
         var debutIndexMessagerie = nbrePagesMessagerie == 1 ? 0 : nbreLienParPage*(currentPageMessagerie - 1);
-        var maxMessagerie = app_data.compte_messagerie.length > nbreLienParPage * (currentPageMessagerie + 1) ? nbreLienParPage * currentPageMessagerie : app_data.compte_messagerie.length;
+        var maxMessagerie = app_data.compte_messagerie.length >= nbreLienParPage * (currentPageMessagerie + 1) ? nbreLienParPage * currentPageMessagerie : app_data.compte_messagerie.length;
         var newMessagerieDataCol = [];
         
         for (var i = debutIndexMessagerie ; i < maxMessagerie ; i++)
@@ -504,7 +504,7 @@ function buildApplicationMenu(app_data){
     if (app_data && app_data.application && app_data.application.length){
         nbrePagesApplication = Math.round(app_data.application.length / nbreLienParPage);
         var debutIndexApplication = nbrePagesApplication == 1 ? 0 : nbreLienParPage*(currentPageApplication - 1);
-        var maxApplication = app_data.application.length > nbreLienParPage * (currentPageApplication + 1) ? nbreLienParPage * currentPageApplication : app_data.application.length;
+        var maxApplication = app_data.application.length >= nbreLienParPage * (currentPageApplication + 1) ? nbreLienParPage * currentPageApplication : app_data.application.length;
         var newApplicationDataCol = [];
 
         for (var i = debutIndexApplication ; i < maxApplication ; i++)
@@ -559,7 +559,7 @@ function buildCarteBancaireMenu(app_data){
     if (app_data && app_data.carte_bancaire && app_data.carte_bancaire.length){
         nbrePagesCarteBancaire = Math.round(app_data.carte_bancaire.length / nbreLienParPage);
         var debutIndexCarteBancaire = nbrePagesCarteBancaire == 1 ? 0 : nbreLienParPage*(currentPageCarteBancaire - 1);
-        var maxCarteBancaire = app_data.carte_bancaire.length > nbreLienParPage * (currentPageCarteBancaire + 1) ? nbreLienParPage * currentPageCarteBancaire : app_data.carte_bancaire.length;
+        var maxCarteBancaire = app_data.carte_bancaire.length >= nbreLienParPage * (currentPageCarteBancaire + 1) ? nbreLienParPage * currentPageCarteBancaire : app_data.carte_bancaire.length;
         var newCarteBancaireDataCol = [];
 
         for (var i = debutIndexCarteBancaire ; i < maxCarteBancaire ; i++)
@@ -616,7 +616,7 @@ function buildServeurMenu(app_data){
     if (app_data && app_data.serveur && app_data.serveur.length){
         nbrePagesServeur = Math.round(app_data.serveur.length / nbreLienParPage);
         var debutIndexServeur = nbrePagesServeur == 1 ? 0 : nbreLienParPage*(currentPageServeur - 1);
-        var maxServeur = app_data.serveur.length > nbreLienParPage * (currentPageServeur + 1) ? nbreLienParPage * currentPageServeur : app_data.serveur.length;
+        var maxServeur = app_data.serveur.length >= nbreLienParPage * (currentPageServeur + 1) ? nbreLienParPage * currentPageServeur : app_data.serveur.length;
         var newServeurDataCol = [];
         
         for (var i = debutIndexServeur ; i < maxServeur ; i++)
