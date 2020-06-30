@@ -155,10 +155,10 @@ function saveNewIdentifiant()
       data: {
                 operation : "create",
                 oIdent : getCurrentIdentifiant(),
-                api_key : api_key
+                api_key : configs.api_key
             },
 
-      url: url_base+"gestion_identifiants_backend/",
+      url: configs[env_name].url_base+configs[env_name].api_entry_point,
 
       success: function(response){
 
@@ -188,10 +188,10 @@ function updateIdentifiant()
       data: {
                 operation : "update",
                 oIdent : getCurrentIdentifiant(),
-                api_key : api_key
+                api_key : configs.api_key
             },
 
-      url: url_base+"gestion_identifiants_backend/",
+      url: configs[env_name].url_base+configs[env_name].api_entry_point,
 
       success: function(response){
 
@@ -211,6 +211,45 @@ function updateIdentifiant()
   });
 }
 
+function searchIdentifiant(oSearch)
+{
+    $.ajax({
+        method: "GET",
+        data: {
+            operation : "search",
+            search_options : oSearch.options.join(";"),
+            search_key: oSearch.key,
+            api_key : configs.api_key
+        },
+
+        url: configs[env_name].url_base+configs[env_name].api_entry_point,
+
+        success: function(response){
+
+            var oData = JSON.parse(response);
+
+            if (oData.return_code == 200)
+            {
+                var oResData = oData.data;
+                if (oSearch.options.indexOf("site_web") != -1){
+                    buildWebSiteMenu(oResData);
+                    $("#site_web").show();
+                }
+                if (oSearch.options.indexOf("messagerie") != -1){
+                    buildMessagerieMenu(oResData);
+                    $("#messagerie").show();
+                }
+                if (oSearch.options.indexOf("application") != -1){
+                    buildApplicationMenu(oResData);
+                    $("#application").show();
+                }
+                
+            }
+
+        }
+    });
+}
+
 function deleteIdentifiant()
 {
   $.ajax({
@@ -218,10 +257,10 @@ function deleteIdentifiant()
       data: {
                 operation : "delete",
                 oIdent : getCurrentIdentifiant(),
-                api_key : api_key
+                api_key : configs.api_key
             },
 
-      url: url_base+"gestion_identifiants_backend/",
+      url: configs[env_name].url_base+configs[env_name].api_entry_point,
 
       success: function(response){
 
@@ -636,10 +675,10 @@ function updateMenu()
     $.ajax({
         method: "GET",
         data: {   operation : "enum",
-                  api_key : api_key
+                  api_key : configs.api_key
               },
 
-        url: url_base+"gestion_identifiants_backend/",
+        url: configs[env_name].url_base+configs[env_name].api_entry_point,
 
         success: function(response){
 

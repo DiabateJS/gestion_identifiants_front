@@ -24,16 +24,16 @@
            <div class="col-lg-3"></div>
            <div class="col-lg-9">
                 <div style="float:right;">
-                    <input type="text" style="width:400px;" placeholder="Search" />
+                    <input type="text" id="search_key" style="width:400px;" placeholder="Search" />
                     <button class="btn btn-sm btn-primary" id="btnSearch">Search</button><br>
                     <table>
                         <tr>
                             <td colspan=3><a href="#" id="searchOption">[-]</a> <b>Options de recherche</b></td>
                         </tr>
                         <tr class="searchOpt">
-                            <td><input type="checkbox" value="site_web">Site Web</td>
-                            <td><input type="checkbox" value="messagerie">Messagerie</td>
-                            <td><input type="checkbox" value="application">Application</td>
+                            <td><input type="checkbox" id="choix_site_web" value="site_web">Site Web</td>
+                            <td><input type="checkbox" id="choix_messagerie" value="messagerie">Messagerie</td>
+                            <td><input type="checkbox" id="choix_application" value="application">Application</td>
                         </tr>
                         <tr class="searchOpt">
                             <td><input type="checkbox" value="carte_bancaire">Carte Bancaire</td>
@@ -247,7 +247,7 @@
                           <input type="text" class="form-control" id="Ident_serveur_adresse_ip">
                       </div>
                       <div class="form-group">
-                          <label for="Ident_serveur.os">Systeme d'exploitation</label>
+                          <label for="ident_serveur_os">Systeme d'exploitation</label>
                           <input type="text" class="form-control" id="Ident_serveur_os">
                       </div>
                       <div class="form-group">
@@ -285,6 +285,24 @@
                 }
                 $(".searchOpt").toggle();
             });
+
+            //Implementation logique de recherche d'identifiants
+            $("#btnSearch").on('click',function(){
+                let oSearch = {
+                    key:$("#search_key").val(),
+                    options:[]
+                };
+                if ($("#choix_site_web").is(':checked')){
+                    oSearch.options.push("site_web");
+                }
+                if ($("#choix_messagerie").is(':checked')) {
+                    oSearch.options.push("messagerie");
+                }
+                if ($("#choix_application").is(':checked')) {
+                    oSearch.options.push("application");
+                }
+                searchIdentifiant(oSearch);
+            })
 
             onFormLoad();
 
