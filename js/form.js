@@ -243,6 +243,14 @@ function searchIdentifiant(oSearch)
                     buildApplicationMenu(oResData);
                     $("#application").show();
                 }
+                if (oSearch.options.indexOf("carte_bancaire") != -1){
+                    buildCarteBancaireMenu(oResData);
+                    $("#carte_bancaire").show();
+                }
+                if (oSearch.options.indexOf("serveur") != -1){
+                    buildServeurMenu(oResData);
+                    $("#serveur").show();
+                }
                 
             }
 
