@@ -36,8 +36,8 @@
                             <td><input type="checkbox" id="choix_application" value="application">Application</td>
                         </tr>
                         <tr class="searchOpt">
-                            <td><input type="checkbox" value="carte_bancaire">Carte Bancaire</td>
-                            <td colspan=2><input type="checkbox" value="serveur">Serveur</td>
+                            <td><input type="checkbox" value="carte_bancaire" id="choix_carte_bancaire">Carte Bancaire</td>
+                            <td colspan=2><input type="checkbox" value="serveur" id="choix_serveur">Serveur</td>
                         </tr>
                     </table>
                 </div>
@@ -301,10 +301,10 @@
                 if ($("#choix_application").is(':checked')) {
                     oSearch.options.push("application");
                 }
-                if ($("#choix_application").is(':checked')) {
+                if ($("#choix_carte_bancaire").is(':checked')) {
                     oSearch.options.push("carte_bancaire");
                 }
-                if ($("#choix_application").is(':checked')) {
+                if ($("#choix_serveur").is(':checked')) {
                     oSearch.options.push("serveur");
                 }
                 searchIdentifiant(oSearch);

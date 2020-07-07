@@ -237,7 +237,7 @@ function searchIdentifiant(oSearch)
                 }
                 if (oSearch.options.indexOf("messagerie") != -1){
                     buildMessagerieMenu(oResData);
-                    $("#messagerie").show();
+                    $("#compte_messagerie").show();
                 }
                 if (oSearch.options.indexOf("application") != -1){
                     buildApplicationMenu(oResData);
