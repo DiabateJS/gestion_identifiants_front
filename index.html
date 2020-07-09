@@ -181,7 +181,10 @@
                       </div>
                       <div class="form-group">
                           <label for="Ident_siteWeb_lien">Lien</label>
-                          <input type="text" class="form-control" id="Ident_siteWeb_lien">
+                          <div>
+                            <input type="text" class="form-control" id="Ident_siteWeb_lien" style="width:300px;float:left">
+                            <button class="btn btn-info" style="float:right" id="btnGoToLink">Go</button>
+                          </div>
                       </div>
                   </div>
                   <div id="carte_bancaire">
@@ -343,6 +346,11 @@
 
             $("#btnSupprimer").click(function(){
                 deleteIdentifiant();
+            });
+
+            $("#btnGoToLink").click(function(){
+                var url = $("#Ident_siteWeb_lien").val();
+                window.open(url, '_blank');
             });
 
         });
