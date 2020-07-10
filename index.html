@@ -149,7 +149,8 @@
                   </div>
                   <div class="form-group">
                       <label for="Ident_mdp">Mot de passe</label>
-                      <input type="text" class="form-control" id="Ident_mdp">
+                      <input type="password" class="form-control" id="Ident_mdp" style="width:370px;float:left">
+                      <button class="btn btn-info" style="float:right;" id="btnShowPwd">Show</button>
                   </div>
                   <div class="form-group">
                       <label for="Ident_commentaire">Commentaires</label>
@@ -351,6 +352,18 @@
             $("#btnGoToLink").click(function(){
                 var url = $("#Ident_siteWeb_lien").val();
                 window.open(url, '_blank');
+            });
+
+            $("#btnShowPwd").click(function(e){
+                e.preventDefault();
+                var typeInput = $("#Ident_mdp").attr("type");
+                if (typeInput == "text"){
+                    $("#Ident_mdp").attr("type","password");
+                    $("#btnShowPwd").html("Show");
+                }else{
+                    $("#Ident_mdp").attr("type","text");
+                    $("#btnShowPwd").html("Hide");
+                }
             });
 
         });
