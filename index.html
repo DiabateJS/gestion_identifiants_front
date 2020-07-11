@@ -13,7 +13,7 @@
 <body>
     <div class="container">
        <div class="row">
-          <div class="jumbotron jumbotron-fluid col-lg-12">
+          <div class="jumbotron jumbotron-fluid col-lg-12 col-12">
              <div class="container">
                  <h1 class="display-4">Gestion d'identifiants</h1>
                  <p class="lead">Cette application vous aide à gérer vos identifiants de façon sécurisée ! </p>
@@ -22,9 +22,9 @@
        </div>
        <div class="row">
            <div class="col-lg-3"></div>
-           <div class="col-lg-9">
-                <div style="float:right;">
-                    <input type="text" id="search_key" style="width:400px;" placeholder="Search" />
+           <div class="col-lg-9 col-12">
+
+                    <input type="text" id="search_key" style="width:60%;" placeholder="Search" />
                     <button class="btn btn-sm btn-primary" id="btnSearch">Search</button><br>
                     <table>
                         <tr>
@@ -40,14 +40,14 @@
                             <td colspan=2><input type="checkbox" value="serveur" id="choix_serveur">Serveur</td>
                         </tr>
                     </table>
-                </div>
+
            </div>
        </div>
        <br>
        <br>
        <form id="global_form">
          <div class="row">
-             <div class="col-lg-3">
+             <div class="col-lg-3 col-12">
                         <br>
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                <div class="panel panel-default">
@@ -122,7 +122,7 @@
                                </div>
                            </div>
              </div>
-             <div class="col-lg-5">
+             <div class="col-lg-5 col-12">
               <fieldset>
                   <legend>Détails</legend>
                   <div class="form-group">
@@ -148,24 +148,17 @@
                       <input type="text" class="form-control" id="Ident_login">
                   </div>
                   <div class="form-group">
-                      <label for="Ident_mdp">Mot de passe</label>
-                      <input type="password" class="form-control" id="Ident_mdp" style="width:370px;float:left">
+                      <label for="Ident_mdp" class="w-100">Mot de passe</label>
+                      <input type="password" class="form-control" id="Ident_mdp" style="width:80%;float:left">
                       <button class="btn btn-info" style="float:right;" id="btnShowPwd">Show</button>
                   </div>
                   <div class="form-group">
                       <label for="Ident_commentaire">Commentaires</label>
                       <textarea class="form-control" id="Ident_commentaire"></textarea>
                   </div>
-                  <div class="form-group">
-                      <center>
-                          <button type="button" class="btn btn-danger" data-placement="right" id="btnSupprimer">Supprimer</button>
-                          <button type="button" class="btn btn-warning" data-placement="center" id="btnNewForm">Nouveau</button>
-                          <button type="button" class="btn btn-success" data-placement="left" id="saveForm">Enregistrer</button>
-                      </center>
-                  </div>
               </fieldset>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-4 col-12">
                   <fieldset>
                       <legend></legend>
                       <br>
@@ -183,7 +176,7 @@
                       <div class="form-group">
                           <label for="Ident_siteWeb_lien">Lien</label>
                           <div>
-                            <input type="text" class="form-control" id="Ident_siteWeb_lien" style="width:300px;float:left">
+                            <input type="text" class="form-control" id="Ident_siteWeb_lien" style="width:85%;float:left">
                             <button class="btn btn-info" style="float:right" id="btnGoToLink">Go</button>
                           </div>
                       </div>
@@ -260,6 +253,17 @@
                       </div>
                   </div>
                 </fieldset>
+            </div>
+        </div>
+           <br>
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-9 col-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-danger" data-placement="right" id="btnSupprimer">Supprimer</button>
+                    <button type="button" class="btn btn-warning" data-placement="center" id="btnNewForm">Nouveau</button>
+                    <button type="button" class="btn btn-success" data-placement="left" id="saveForm">Enregistrer</button>
+                </div>
             </div>
         </div>
       </form>
